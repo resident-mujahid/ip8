@@ -1,7 +1,7 @@
 import org.sql2o.*;
 import java.util.List;
 
-public class Endangered extends Animal {
+public class EndangeredAnimal extends Animal {
   private String health;
   private String age;
 
@@ -13,7 +13,7 @@ public class Endangered extends Animal {
   public static final String AGE_YOUNG = "young";
   public static final String AGE_ADULT = "adult";
 
-  public Endangered(String name, String endangered, String health, String age) {
+  public EndangeredAnimal(String name, String endangered, String health, String age) {
     this.name = name;
     this.endangered = endangered;
     this.health = health;

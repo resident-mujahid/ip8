@@ -9,14 +9,13 @@ public class Sighting {
   private Timestamp timestamp;
   private int id;
 
-    //add animal_id after building it.
   public Sighting (String ranger_name, String location, int animal_id) {
     this.ranger_name = ranger_name;
     this.location = location;
     this.animal_id = animal_id;
   }
 
-  public String getRangerNamer() {
+  public String getRangerName() {
     return ranger_name;
   }
 
@@ -31,8 +30,5 @@ public class Sighting {
   public int getId() {
     return id;
   }
-
-
-
 
 }
