@@ -76,4 +76,12 @@ public class Sighting {
     }
   }
 
+  // public void formSubmit() {
+  //   Animal newAnimal = new Animal(name, endangered);
+  //   Animal.save();
+  //   Sighting newSighting = new Sighting(ranger_name, location, int animal_id);
+  //   Sighting.save();
+  //
+  // }
+
 }

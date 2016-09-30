@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class EndangeredAnimalTest {
 
-  EndangeredAnimal endangered1 = new EndangeredAnimal("Spotted Owl", "Yes", "ill", "young");
-  EndangeredAnimal endangered2 = new EndangeredAnimal("Black Rhino", "Yes", "okay", "newborn");
+  EndangeredAnimal endangered1 = new EndangeredAnimal("Spotted Owl", "yes", "ill", "young");
+  EndangeredAnimal endangered2 = new EndangeredAnimal("Black Rhino", "yes", "okay", "newborn");
 
   @Rule
   public DatabaseRule database = new DatabaseRule();
@@ -26,9 +26,9 @@ public class EndangeredAnimalTest {
   }
 
   @Test
-  public void getEndangered_personInstantiatesWithEndangered_No() {
+  public void getEndangered_personInstantiatesWithEndangered_no() {
     EndangeredAnimal testEndangeredAnimal = endangered1;
-    assertEquals("Yes", testEndangeredAnimal.getEndangered());
+    assertEquals("yes", testEndangeredAnimal.getEndangered());
   }
 
   @Test
@@ -86,11 +86,21 @@ public class EndangeredAnimalTest {
 
   @Test
   public void setEndangered_Animal_true() {
-    EndangeredAnimal myEndangeredAnimal = new EndangeredAnimal("Spotted Owl", "No", "healthy", "young");
+    EndangeredAnimal myEndangeredAnimal = new EndangeredAnimal("Spotted Owl", "no", "healthy", "young");
     myEndangeredAnimal.save();
-    myEndangeredAnimal.setEndangered("Yes", "ill", "newborn");
-    assertEquals("Yes", EndangeredAnimal.find(myEndangeredAnimal.getId()).getEndangered());
+    myEndangeredAnimal.setEndangered("yes", "ill", "newborn");
+    assertEquals("yes", EndangeredAnimal.find(myEndangeredAnimal.getId()).getEndangered());
     assertEquals("ill", EndangeredAnimal.find(myEndangeredAnimal.getId()).getHealth());
     assertEquals("newborn", EndangeredAnimal.find(myEndangeredAnimal.getId()).getAge());
+  }
+
+  @Test
+  public void setEndangered_cannotSetEndangeredIfAnswerIsNo_True() {
+    Animal myEndangeredAnimal = new Animal("Spotted Owl", "no");
+    myEndangeredAnimal.save();
+    try {
+      myEndangeredAnimal.setEndangered("no", "ill", "newborn");
+    } catch (IllegalArgumentException exception){}
+    assertTrue(myEndangeredAnimal.getEndangered().equals("no"));
   }
 }

@@ -36,6 +36,15 @@ public class Animal {
   }
 
   public void setEndangered(String endangered, String health, String age) {
+    if (endangered.equals("no")
+    && (health.equals("ill"))
+    || (health.equals("okay"))
+    || (health.equals("healthy"))
+    && (age.equals("newborn"))
+    || (age.equals("young"))
+    || (age.equals("adult"))) {
+      throw new IllegalArgumentException("You cannot set endangered options if you say, no");
+    }
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE animals SET endangered = :endangered, health = :health, age = :age WHERE id = :id";
       con.createQuery(sql)
