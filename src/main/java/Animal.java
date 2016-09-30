@@ -36,16 +36,16 @@ public class Animal {
   }
 
   public void setEndangered(String endangered, String health, String age) {
-  try(Connection con = DB.sql2o.open()) {
-    String sql = "UPDATE animals SET endangered = :endangered, health = :health, age = :age WHERE id = :id";
-    con.createQuery(sql)
-      .addParameter("endangered", endangered)
-      .addParameter("health", health)
-      .addParameter("age", age)
-      .addParameter("id", id)
-      .executeUpdate();
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE animals SET endangered = :endangered, health = :health, age = :age WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("endangered", endangered)
+        .addParameter("health", health)
+        .addParameter("age", age)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
   }
-}
 
   @Override
   public boolean equals(Object otherAnimal) {
