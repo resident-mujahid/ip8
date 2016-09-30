@@ -26,5 +26,4 @@ public class EndangeredAnimal extends Animal {
   public String getAge() {
     return age;
   }
-
 }
