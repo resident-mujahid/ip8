@@ -19,7 +19,7 @@ public class SightingTest {
   }
 
   @Test
-  public void getRangerName_personInstantiatesWithRangerName_ranger_name() {
+  public void getRangerName_personInstantiatesWithRangerName_Henry() {
     Sighting testSighting = sighting1;
     assertEquals("Henry", testSighting.getRangerName());
   }

@@ -14,8 +14,7 @@ public class EndangeredAnimal extends Animal {
   public static final String AGE_ADULT = "adult";
 
   public EndangeredAnimal(String name, String endangered, String health, String age) {
-    this.name = name;
-    this.endangered = endangered;
+    super(name, endangered);
     this.health = health;
     this.age = age;
   }

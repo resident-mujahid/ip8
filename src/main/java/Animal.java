@@ -6,6 +6,11 @@ public class Animal {
   public String endangered;
   public int id;
 
+  public Animal(String name, String endangered) {
+    this.name = name;
+    this.endangered = endangered;
+  }
+
   public String getName() {
     return name;
   }
