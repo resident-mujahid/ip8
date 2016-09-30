@@ -29,6 +29,7 @@ public class Animal {
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
         .addParameter("endangered", this.endangered)
+        .throwOnMappingFailure(false)
         .executeUpdate()
         .getKey();
     }
@@ -48,6 +49,7 @@ public class Animal {
     String sql = "select * from animals";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
+      .throwOnMappingFailure(false)
       .executeAndFetch(Animal.class);
     }
   }
