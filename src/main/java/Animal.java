@@ -2,9 +2,9 @@ import org.sql2o.*;
 import java.util.List;
 
 public class Animal {
-  private String name;
-  private String endangered;
-  private int id;
+  public String name;
+  public String endangered;
+  public int id;
 
   public String getName() {
     return name;
@@ -18,5 +18,5 @@ public class Animal {
     return id;
   }
 
-  
+
 }
