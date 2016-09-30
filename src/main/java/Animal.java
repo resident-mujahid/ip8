@@ -39,8 +39,13 @@ public class Animal {
   }
 
   public void setEndangered(String endangered, String health, String age) {
-    if (!(endangered.equals("yes"))) {
-      throw new UnsupportedOperationException("You cannot set endangered options if you say, no");
+    if ((!health.equals(EndangeredAnimal.HEALTH_ILL)
+      && !health.equals(EndangeredAnimal.HEALTH_OKAY)
+      && !health.equals(EndangeredAnimal.HEALTH_HEALTHY))
+      || (!age.equals(EndangeredAnimal.AGE_NEWBORN)
+      && !age.equals(EndangeredAnimal.AGE_YOUNG)
+      && !age.equals(EndangeredAnimal.AGE_ADULT))) {
+      throw new UnsupportedOperationException("Please choose from ill, okay, healthy or newborn, young, adult");
     }
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE animals SET endangered = :endangered, health = :health, age = :age WHERE id = :id";

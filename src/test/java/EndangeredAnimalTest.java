@@ -95,9 +95,16 @@ public class EndangeredAnimalTest {
   }
 
   @Test(expected = UnsupportedOperationException.class)
-  public void setEndangered_throwsExceptionIfEndangeredValueIsNotYes(){
+  public void setEndangered_throwsExceptionIfHealthIsNotAChoice(){
     EndangeredAnimal myEndangeredAnimal = new EndangeredAnimal("Spotted Owl", "no", "healthy", "young");
     myEndangeredAnimal.save();
-    myEndangeredAnimal.setEndangered("no", "ill", "newborn");
+    myEndangeredAnimal.setEndangered("yes", "blech", "newborn");
+  }
+
+  @Test(expected = UnsupportedOperationException.class)
+  public void setEndangered_throwsExceptionIfAgeIsNotAChoice(){
+    EndangeredAnimal myEndangeredAnimal = new EndangeredAnimal("Spotted Owl", "no", "healthy", "young");
+    myEndangeredAnimal.save();
+    myEndangeredAnimal.setEndangered("yes", "ill", "blech");
   }
 }
