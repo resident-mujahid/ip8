@@ -94,13 +94,10 @@ public class EndangeredAnimalTest {
     assertEquals("newborn", EndangeredAnimal.find(myEndangeredAnimal.getId()).getAge());
   }
 
-  @Test
-  public void setEndangered_cannotSetEndangeredIfAnswerIsNo_True() {
-    Animal myEndangeredAnimal = new Animal("Spotted Owl", "no");
+  @Test(expected = UnsupportedOperationException.class)
+  public void setEndangered_throwsExceptionIfEndangeredValueIsNotYes(){
+    EndangeredAnimal myEndangeredAnimal = new EndangeredAnimal("Spotted Owl", "no", "healthy", "young");
     myEndangeredAnimal.save();
-    try {
-      myEndangeredAnimal.setEndangered("no", "ill", "newborn");
-    } catch (IllegalArgumentException exception){}
-    assertTrue(myEndangeredAnimal.getEndangered().equals("no"));
+    myEndangeredAnimal.setEndangered("no", "ill", "newborn");
   }
 }

@@ -71,4 +71,10 @@ public class AnimalTest {
     secondAnimal.save();
     assertEquals(Animal.find(secondAnimal.getId()), secondAnimal);
   }
+
+  @Test(expected = UnsupportedOperationException.class)
+  public void save_throwsExceptionIfNameIsEmpty(){
+    Animal myAnimal = new Animal("", "no");
+    myAnimal.save();
+  }
 }
