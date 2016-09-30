@@ -4,6 +4,8 @@ import org.sql2o.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class SightingTest {
 
@@ -49,6 +51,42 @@ public class SightingTest {
     Sighting testSighting = sighting1;
     testSighting.save();
     assertEquals(true, Sighting.all().get(0).equals(testSighting));
+  }
+
+  @Test
+  public void save_assignsIdToSighting() {
+    Sighting testSighting = sighting1;
+    testSighting.save();
+    Sighting savedSighting = Sighting.all().get(0);
+    assertEquals(savedSighting.getId(), testSighting.getId());
+  }
+
+  @Test
+  public void all_returnsAllInstancesOfSighting_true() {
+    Sighting firstSighting = sighting1;
+    firstSighting.save();
+    Sighting secondSighting = sighting2;
+    secondSighting.save();
+    assertEquals(true, Sighting.all().get(0).equals(firstSighting));
+    assertEquals(true, Sighting.all().get(1).equals(secondSighting));
+  }
+
+  @Test
+  public void find_returnsSightingWithSameId_secondSighting() {
+    Sighting firstSighting = sighting1;
+    firstSighting.save();
+    Sighting secondSighting = sighting2;
+    secondSighting.save();
+    assertEquals(Sighting.find(secondSighting.getId()), secondSighting);
+  }
+
+  @Test
+  public void save_recordsTimeOfCreationInDatabase() {
+    Sighting testSighting = sighting1;
+    testSighting.save();
+    Timestamp savedSightingTime = Sighting.find(testSighting.getId()).getTimestamp();
+    Timestamp rightNow = new Timestamp(new Date().getTime());
+    assertEquals(rightNow.getDay(), savedSightingTime.getDay());
   }
 
 }
