@@ -72,7 +72,7 @@ public class AnimalTest {
     assertEquals(Animal.find(secondAnimal.getId()), secondAnimal);
   }
 
-  @Test(expected = UnsupportedOperationException.class)
+  @Test(expected = IllegalArgumentException.class)
   public void save_throwsExceptionIfNameIsEmpty(){
     Animal myAnimal = new Animal("", "no");
     myAnimal.save();

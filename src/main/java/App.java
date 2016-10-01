@@ -31,8 +31,11 @@ public class App {
 
       Animal newAnimal = new Animal(name, endangered);
       newAnimal.save();
+
       Sighting newSighting = new Sighting(ranger_name, location, newAnimal.getId());
-      newSighting.save();
+      // try {
+      //   newSighting.save();
+      // } catch ()
 
       response.redirect("/");
       return new ModelAndView(model, layout);

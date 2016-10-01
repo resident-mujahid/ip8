@@ -25,7 +25,7 @@ public class Animal {
 
   public void save() {
     if (name.equals("")) {
-      throw new UnsupportedOperationException("Please enter a name.");
+      throw new IllegalArgumentException("Please enter a name.");
     }
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO animals (name, endangered) VALUES (:name, :endangered)";
@@ -45,7 +45,7 @@ public class Animal {
       || (!age.equals(EndangeredAnimal.AGE_NEWBORN)
       && !age.equals(EndangeredAnimal.AGE_YOUNG)
       && !age.equals(EndangeredAnimal.AGE_ADULT))) {
-      throw new UnsupportedOperationException("Please choose from ill, okay, healthy or newborn, young, adult");
+      throw new IllegalArgumentException("Please choose from ill, okay, healthy or newborn, young, adult");
     }
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE animals SET endangered = :endangered, health = :health, age = :age WHERE id = :id";
@@ -116,7 +116,7 @@ public class Animal {
       return name;
     }
   }
-  
+
   public static String getAnimalAge(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT age FROM animals WHERE id = :id;";
