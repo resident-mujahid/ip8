@@ -9,3 +9,7 @@ header {
   text-decoration: none;
   color: black;
 }
+
+#location {
+  margin-top: 20px;
+}

@@ -20,5 +20,23 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/sighting/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String ranger_name = request.queryParams("ranger_name");
+      String location = request.queryParams("location");
+      String name = request.queryParams("name");
+      String endangered = request.queryParams("endangered");
+      String health = request.queryParams("health");
+      String age = request.queryParams("age");
+
+      Animal newAnimal = new Animal(name, endangered);
+      newAnimal.save();
+      Sighting newSighting = new Sighting(ranger_name, location, newAnimal.getId());
+      newSighting.save();
+
+      response.redirect("/");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }
