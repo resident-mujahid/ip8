@@ -28,26 +28,26 @@ public class App {
       String endangered = request.queryParams("endangered");
       String health = request.queryParams("health");
       String age = request.queryParams("age");
-
       Animal newAnimal = new Animal(name, endangered);
-      if(newAnimal.completeSave()) {
-        newAnimal.save();
-      } else {
-        response.redirect("/failure");
-      }
 
       if (endangered.equals("yes")) {
         if(newAnimal.completeEndangered(endangered, health, age)) {
+          newAnimal.save();
           newAnimal.setEndangered(endangered, health, age);
+          Sighting newSighting = new Sighting(ranger_name, location, newAnimal.getId());
+          newSighting.save();
         } else {
           response.redirect("/failure2");
         }
+      } else if (endangered.equals("no")) {
+        if(newAnimal.completeSave()) {
+          newAnimal.save();
+          Sighting newSighting = new Sighting(ranger_name, location, newAnimal.getId());
+          newSighting.save();
+        } else {
+          response.redirect("/failure");
+        }
       }
-
-
-
-      Sighting newSighting = new Sighting(ranger_name, location, newAnimal.getId());
-      newSighting.save();
 
       response.redirect("/");
       return new ModelAndView(model, layout);
