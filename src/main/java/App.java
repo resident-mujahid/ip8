@@ -25,9 +25,9 @@ public class App {
       String ranger_name = request.queryParams("ranger_name");
       String location = request.queryParams("location");
       String name = request.queryParams("name");
-      String endangered = request.queryParams("endangered");
-      String health = request.queryParams("health");
-      String age = request.queryParams("age");
+      String endangered = request.queryParams("endangered").toLowerCase();
+      String health = request.queryParams("health").toLowerCase();
+      String age = request.queryParams("age").toLowerCase();
       Animal newAnimal = new Animal(name, endangered);
 
       if (endangered.equals("yes")) {
