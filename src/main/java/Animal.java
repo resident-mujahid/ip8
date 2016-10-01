@@ -135,4 +135,13 @@ public class Animal {
       return false;
     }
   }
+
+  public boolean completeEndangered(String endangered, String health, String age) {
+    try {
+      this.setEndangered(endangered, health, age);
+      return true;
+    } catch (IllegalArgumentException exception) {
+      return false;
+    }
+  }
 }

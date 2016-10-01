@@ -32,9 +32,16 @@ public class App {
       Animal newAnimal = new Animal(name, endangered);
       if(newAnimal.completeSave()) {
         newAnimal.save();
-        response.redirect("/");
       } else {
         response.redirect("/failure");
+      }
+
+      if (endangered.equals("yes")) {
+        if(newAnimal.completeEndangered(endangered, health, age)) {
+          newAnimal.setEndangered(endangered, health, age);
+        } else {
+          response.redirect("/failure2");
+        }
       }
 
 
@@ -42,6 +49,7 @@ public class App {
       Sighting newSighting = new Sighting(ranger_name, location, newAnimal.getId());
       newSighting.save();
 
+      response.redirect("/");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
