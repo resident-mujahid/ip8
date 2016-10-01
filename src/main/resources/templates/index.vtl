@@ -57,8 +57,18 @@
           <tr>
             <td>$sighting.getRangerName()</td>
             <td>$sighting.getLocation()</td>
-            <td>$AnimalClass.getAnimalName($sighting.getAnimalId())</td>
-            <td>$AnimalClass.getAnimalEndangered($sighting.getAnimalId())</td>
+
+            #if ($AnimalClass.getAnimalName($sighting.getAnimalId()))
+              <td>$AnimalClass.getAnimalName($sighting.getAnimalId())</td>
+            #else
+              <td></td>
+            #end
+
+            #if ($AnimalClass.getAnimalEndangered($sighting.getAnimalId()))
+              <td>$AnimalClass.getAnimalEndangered($sighting.getAnimalId())</td>
+            #else
+              <td></td>
+            #end
 
             #if ($AnimalClass.getAnimalHealth($sighting.getAnimalId()))
               <td>$AnimalClass.getAnimalHealth($sighting.getAnimalId())</td>

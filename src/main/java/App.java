@@ -37,6 +37,8 @@ public class App {
         response.redirect("/failure");
       }
 
+
+
       Sighting newSighting = new Sighting(ranger_name, location, newAnimal.getId());
       newSighting.save();
 
@@ -46,6 +48,12 @@ public class App {
     get("/failure", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/failure.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/failure2", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/failure2.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
