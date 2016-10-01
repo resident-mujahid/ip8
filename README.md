@@ -16,8 +16,10 @@ To use the code, you can clone the repository at: [https://github.com/mehequanna
 
 ##Database Instructions (postgres/psql)
 * CREATE DATABASE wildlife_tracker; (Run in psql)
-* psql wildlife_tracker < wildlife_tracker.sql (Run in terminal)
-* \c wildlife_tracker (Run the rest in psql)
+* CREATE TABLE sightings (id serial PRIMARY KEY, ranger_name varchar, location varchar, animal_id int, timestamp timestamp);
+* CREATE TABLE animals (id serial PRIMARY KEY, name varchar, endangered varchar, health varchar, age varchar);
+* CREATE DATABASE wildlife_tracker_test WITH TEMPLATE wildlife_tracker;
+* \c wildlife_tracker
 * Finally check for tables by running: \dt
 
 
