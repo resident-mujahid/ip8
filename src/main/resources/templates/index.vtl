@@ -38,12 +38,15 @@
       <thead>
         <th class="col-xs-1">Ranger Name</th>
         <th class="col-xs-1">Location</th>
+        <th class="col-xs-1">Timestamp</th>
       </thead>
       <tbody>
         #foreach ($sighting in $sightings)
           <tr>
             <td>$sighting.getRangerName()</td>
             <td>$sighting.getLocation()</td>
+            <td>$sighting.getTimestamp()</td>
+            <td>$AnimalClass.getAnimalName($sighting.getAnimalId())</td>
           </tr>
         #end
       </tbody>

@@ -15,6 +15,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("sightings", Sighting.all());
       model.put("animals", Animal.all());
+      model.put("AnimalClass", Animal.class);
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
