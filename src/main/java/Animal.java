@@ -126,4 +126,13 @@ public class Animal {
       return name;
     }
   }
+
+  public boolean completeSave() {
+    try {
+      this.save();
+      return true;
+    } catch (IllegalArgumentException exception) {
+      return false;
+    }
+  }
 }

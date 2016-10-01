@@ -30,14 +30,22 @@ public class App {
       String age = request.queryParams("age");
 
       Animal newAnimal = new Animal(name, endangered);
-      newAnimal.save();
+      if(newAnimal.completeSave()) {
+        newAnimal.save();
+        response.redirect("/");
+      } else {
+        response.redirect("/failure");
+      }
 
       Sighting newSighting = new Sighting(ranger_name, location, newAnimal.getId());
-      // try {
-      //   newSighting.save();
-      // } catch ()
+      newSighting.save();
 
-      response.redirect("/");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/failure", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/failure.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
