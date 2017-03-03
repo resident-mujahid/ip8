@@ -25,8 +25,8 @@ To use the code, you can clone the repository at: [https://github.com/mehequanna
 * Finally check for tables in psql by running: \dt
 
 ## Author
-Stephen Emery
+Resident Mujahid
 
 ##License
 This work can be used under the MIT License.
-Copyright (c) 2016 Stephen Emery
+Copyright (c) 2016 Resident Mujahid
